@@ -1,0 +1,14 @@
+Lab 1 :
+Lexical Analysis
+
+[Due 15th September]
+
+
+Two part lab:
+
+
+
+Design a simple script that takes an English sentence(s) (either static or dynamic) and outputs the individual words. 
+E.g. An input can be "He is a smart student". The output will be individual words "He", "is", "a", "smart" and "student". Each word on its own line.
+
+Edit the flex input file, specifying your own rules (patterns and actions). Explain what the resultant lexer from your specification file would do.
