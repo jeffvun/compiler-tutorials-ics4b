@@ -1,7 +1,10 @@
 int main() {
-    int x = 42;
-    if (x > 10) {
-        printf("Hello, World!\n");
+    int x = input("Enter a number: ");
+    if (x == 21) {
+        printf("You guessed my age!\n");
+    }
+    else {
+        printf("Try again");
     }
     return 0;
 }
