@@ -12,3 +12,11 @@ Design a simple script that takes an English sentence(s) (either static or dynam
 E.g. An input can be "He is a smart student". The output will be individual words "He", "is", "a", "smart" and "student". Each word on its own line.
 
 Edit the flex input file, specifying your own rules (patterns and actions). Explain what the resultant lexer from your specification file would do.
+
+In order to run the lexer:
+    1. Create the lex.yy.c file containing c code for the scanner 
+    >> lex program_lexer.l
+    2. Compile scanner named 'scan' and Link it with the lex library
+    >> gcc -o scan lex.yy.c -ll
+    3. executes the scanner by providing as input to the scanner a file named input_code.txt 
+    >> ./scan input_code.txt
