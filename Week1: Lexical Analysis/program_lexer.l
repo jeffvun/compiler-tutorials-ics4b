@@ -26,6 +26,8 @@ void checker(char * str){
     else if(strcmp(str, "void") == 0) { printf("KEYWORD: void\n"); }
     else if(strcmp(str, "return") == 0) { printf("KEYWORD: return\n"); }
     else if(strcmp(str, "continue") == 0) { printf("KEYWORD: continue\n"); }
+    else if(strcmp(str, "input") == 0) { printf("KEYWORD: input\n"); }
+    else if(strcmp(str, "printf") == 0) { printf("KEYWORD: printf\n"); }
     else if(strcmp(str, "const") == 0) { printf("KEYWORD: const\n"); }
     else{
         printf("IDENTIFIER: %s\n", str);
@@ -34,9 +36,14 @@ void checker(char * str){
     num_keywords++;
 }
 
+#define RED_COLOR "\x1B[31m"
+#define GREEN_COLOR "\x1B[32m"
+#define RESET_COLOR "\x1B[0m"
+
 %}
 
 %option noyywrap  
+%x STRING
 
 %% 
 
@@ -58,15 +65,23 @@ void checker(char * str){
 ")"                     { printf("RIGHT PARENTHESIS: )\n"); }
 "{"                     { printf("LEFT BRACE: {\n"); }
 "}"                     { printf("RIGHT BRACE: }\n"); }
+","                     { printf("COMMA: ,\n"); }
+
+"\""                    {BEGIN (STRING); printf("OPENING QUOTE: %s\n", yytext); }
+<STRING>[^"]+           { printf("STRING LITERAL: %s\n", yytext); }
+<STRING>"\""            { BEGIN(INITIAL); printf("CLOSING QUOTE: %s\n", yytext); }
 
 [ \t\n]                 ;  // Ignore whitespace and newline characters
-.                       { printf("UNKNOWN CHARACTER: %s\n", yytext); num_unrecognized++;}
+. { 
+    printf(RED_COLOR "UNKNOWN CHARACTER: %s\n" RED_COLOR, yytext); 
+    num_unrecognized++;
+}
 
 %%
 
 int main( int argc, char* argv[]) {
     if (argc != 2){
-        printf("Usage: ./lexer <input file>\n");
+        printf("Use: ./lexer <input file>\n");
         return 1;
     }
 
@@ -83,15 +98,16 @@ int main( int argc, char* argv[]) {
     yylex();
     fclose(inputFile);
 
-    printf("Number of identifiers: %d\n", num_identifiers);
+    printf("\nNumber of identifiers: %d\n", num_identifiers);
     printf("Number of keywords: %d\n", num_keywords - num_identifiers);
     printf("Number of unrecognized characters: %d\n", num_unrecognized);
 
     if(num_unrecognized > 0){
-        printf("\nThe language is considered invalid\n");
-        printf("Please check the input program for errors\n");
+        printf(RED_COLOR "\nThe language is considered invalid\n");
+        printf("Please check the input program for errors\n" RESET_COLOR);
         return 1;
     }
+    printf(GREEN_COLOR "\nThe language is valid\n" RESET_COLOR);
 
     return 0;
 }
