@@ -1,7 +1,7 @@
 # Comprehensive Compiler Construction Tutorials and Exercises
 
 ## Description
-Welcome to our GitHub repository dedicated to Compiler Construction! Whether you're a curious beginner looking to dive into the world of compiler design, this repository is your one-stop resource for learning and practicing the frontend aspect of compiler construction, from scanners, tokenizers to parsers and etc...
+Welcome to our GitHub repository dedicated to Compiler Construction! If you're a curious beginner looking to dive into the world of compiler design, then this repository could be your one-stop resource for learning and practicing the frontend aspect of compiler construction, from scanners, tokenizers to parsers and etc...
 
 **What You'll Find Here:**
 
