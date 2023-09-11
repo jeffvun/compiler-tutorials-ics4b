@@ -3,6 +3,10 @@
 %{
 #include <stdio.h> 
 
+int num_identifiers = 0;
+int num_keywords = 0;
+int num_unrecognized = 0;
+
 /*
 A function to check for identifiers and keywords */
 
@@ -23,7 +27,11 @@ void checker(char * str){
     else if(strcmp(str, "return") == 0) { printf("KEYWORD: return\n"); }
     else if(strcmp(str, "continue") == 0) { printf("KEYWORD: continue\n"); }
     else if(strcmp(str, "const") == 0) { printf("KEYWORD: const\n"); }
-    else{printf("IDENTIFIER: %s\n", str);}
+    else{
+        printf("IDENTIFIER: %s\n", str);
+        num_identifiers++;
+    }
+    num_keywords++;
 }
 
 %}
@@ -52,11 +60,38 @@ void checker(char * str){
 "}"                     { printf("RIGHT BRACE: }\n"); }
 
 [ \t\n]                 ;  // Ignore whitespace and newline characters
-.                       { printf("UNKNOWN CHARACTER: %s\n", yytext); }
+.                       { printf("UNKNOWN CHARACTER: %s\n", yytext); num_unrecognized++;}
 
 %%
 
-int main() {
+int main( int argc, char* argv[]) {
+    if (argc != 2){
+        printf("Usage: ./lexer <input file>\n");
+        return 1;
+    }
+
+    FILE* inputFile = fopen(argv[1], "r");
+
+    if (inputFile == 0){
+        printf("Could not open file %s\n", argv[1]);
+        printf("Input the program from the terminal");
+        yylex();
+        return 1;
+    }
+
+    yyin = inputFile;
     yylex();
+    fclose(inputFile);
+
+    printf("Number of identifiers: %d\n", num_identifiers);
+    printf("Number of keywords: %d\n", num_keywords - num_identifiers);
+    printf("Number of unrecognized characters: %d\n", num_unrecognized);
+
+    if(num_unrecognized > 0){
+        printf("\nThe language is considered invalid\n");
+        printf("Please check the input program for errors\n");
+        return 1;
+    }
+
     return 0;
 }

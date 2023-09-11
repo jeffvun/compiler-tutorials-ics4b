@@ -1859,7 +1859,24 @@ void yyfree (void * ptr )
 #line 57 "program_lexer.l"
 
 
-int main() {
+int main( int argc, char* argv[]) {
+    if (argc != 2){
+        printf("Usage: ./lexer <input file>\n");
+        return 1;
+    }
+
+    FILE* inputFile = fopen(argv[1], "r");
+
+    if (inputFile == 0){
+        printf("Could not open file %s\n", argv[1]);
+        printf("Input the program from the terminal");
+        yylex();
+        return 1;
+    }
+
+    yyin = inputFile;
     yylex();
+    fclose(inputFile);
+
     return 0;
 }
