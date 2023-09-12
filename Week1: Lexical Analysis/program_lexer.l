@@ -73,31 +73,13 @@ void checker(char * str){
 
 [ \t\n]                 ;  // Ignore whitespace and newline characters
 . { 
-    printf(RED_COLOR "UNKNOWN CHARACTER: %s\n" RED_COLOR, yytext); 
+    printf(RED_COLOR "UNKNOWN CHARACTER: %s\n" RESET_COLOR, yytext); 
     num_unrecognized++;
 }
 
 %%
 
-int main( int argc, char* argv[]) {
-    if (argc != 2){
-        printf("Use: ./lexer <input file>\n");
-        return 1;
-    }
-
-    FILE* inputFile = fopen(argv[1], "r");
-
-    if (inputFile == 0){
-        printf("Could not open file %s\n", argv[1]);
-        printf("Input the program from the terminal");
-        yylex();
-        return 1;
-    }
-
-    yyin = inputFile;
-    yylex();
-    fclose(inputFile);
-
+void summary(){
     printf("\nNumber of identifiers: %d\n", num_identifiers);
     printf("Number of keywords: %d\n", num_keywords - num_identifiers);
     printf("Number of unrecognized characters: %d\n", num_unrecognized);
@@ -105,9 +87,33 @@ int main( int argc, char* argv[]) {
     if(num_unrecognized > 0){
         printf(RED_COLOR "\nThe language is considered invalid\n");
         printf("Please check the input program for errors\n" RESET_COLOR);
+    }
+    else{
+        printf(GREEN_COLOR "\nThe language is valid\n" RESET_COLOR);
+    }
+
+}
+
+int main( int argc, char* argv[]) {
+    if (argc != 2){
+        printf("Normal Use: ./scan <input_file>\n");
+        printf("Input the testing program from the terminal: ");
+        yylex();
         return 1;
     }
-    printf(GREEN_COLOR "\nThe language is valid\n" RESET_COLOR);
+
+    FILE* inputFile = fopen(argv[1], "r");
+
+    if (inputFile == 0){
+        printf("Could not open file %s\n", argv[1]);
+        return 1;
+    }
+
+    yyin = inputFile;
+    yylex();
+    fclose(inputFile);
+
+    summary();
 
     return 0;
 }

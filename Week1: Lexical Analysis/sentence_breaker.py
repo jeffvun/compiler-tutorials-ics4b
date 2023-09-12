@@ -18,3 +18,4 @@ for sentence in sentences:
 
     # Add an empty line between sentences
     print()
+    
