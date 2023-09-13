@@ -1,5 +1,6 @@
 /*Developed by Joseph and Lee. This lexer generated from these specifications will tokenize an input program : identifying integers, identifiers, keywords, operators, and special characters. It will print each token with its corresponding category, making it easy to analyze the input program's lexical structure.*/
 
+/* Definitions section
 %{
 #include <stdio.h> 
 
@@ -44,6 +45,8 @@ void checker(char * str){
 
 %option noyywrap  
 %x STRING
+
+/*Rules section
 
 %% 
 
