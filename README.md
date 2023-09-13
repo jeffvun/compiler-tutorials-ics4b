@@ -1,5 +1,9 @@
 # Comprehensive Compiler Construction Tutorials and Exercises
 
+## Group Members
+Joseph Dua Vunanga - 136371
+Lee Leonard Sangoroh - 134327
+
 ## Description
 Welcome to our GitHub repository dedicated to Compiler Construction! If you're a curious beginner looking to dive into the world of compiler design, then this repository could be your one-stop resource for learning and practicing the frontend aspect of compiler construction, from scanners, tokenizers to parsers and etc...
 
