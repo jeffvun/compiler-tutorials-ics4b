@@ -1,0 +1,4 @@
+1. Complete the parsing of the input "id + id * id" using the parsing table developed in class. 
+2. Using a grammar of your choice (not the one from the class), get the First(), Follow(), and the parsing table. Thereafter, parse an input from the chosen grammar. 
+
+Submit a pdf to the link provided. The submission of this work will be credited with the attendance of the week starting 25th September 2023.
