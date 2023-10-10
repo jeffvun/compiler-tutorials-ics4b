@@ -45,11 +45,16 @@ int main(int argc, char* argv[]) {
         // Check if the current line contains the end of a comment
         if (strstr(current_line, "*/") != NULL) {
             in_comment = 0;
-            printf("Comment End: %s\n", current_line);
+            printf("Comment End: %s", current_line);
+        }
+
+        // Check if the current line contains a single-line comment
+        if (strstr(current_line, "//") != NULL) {
+            printf("Single Line Comment: %s", current_line);
         }
 
         // Print the line as code or comment based on the flag
-        if (in_comment) {
+        else if (in_comment) {
             printf("Comment: %s", current_line);
         } else {
             printf("Code: %s", current_line);
