@@ -444,9 +444,14 @@ char *yytext;
 #line 1 "task1.l"
 #line 2 "task1.l"
 #include <stdio.h>
-#line 448 "lex.yy.c"
 
-#line 450 "lex.yy.c"
+#define RED_COLOR "\x1B[31m"
+#define GREEN_COLOR "\x1B[32m"
+#define RESET_COLOR "\x1B[0m"
+
+#line 453 "lex.yy.c"
+
+#line 455 "lex.yy.c"
 
 #define INITIAL 0
 #define comment 1
@@ -664,9 +669,9 @@ YY_DECL
 		}
 
 	{
-#line 10 "task1.l"
+#line 15 "task1.l"
 
-#line 670 "lex.yy.c"
+#line 675 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -725,36 +730,36 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 11 "task1.l"
+#line 16 "task1.l"
 { printf("Comment Start: %s\n", yytext); BEGIN(comment); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "task1.l"
+#line 17 "task1.l"
 { printf("Comment End: %s\n", yytext); BEGIN(INITIAL); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 14 "task1.l"
+#line 19 "task1.l"
 { printf("Single Line Comment: %s\n", yytext); }
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 15 "task1.l"
+#line 20 "task1.l"
 ;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 17 "task1.l"
+#line 22 "task1.l"
 { printf("Code: %s", yytext); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "task1.l"
+#line 23 "task1.l"
 ECHO;
 	YY_BREAK
-#line 758 "lex.yy.c"
+#line 763 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(comment):
 	yyterminate();
@@ -1760,7 +1765,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 18 "task1.l"
+#line 23 "task1.l"
 
 
 int main(int argc, char* argv[]) {
@@ -1785,17 +1790,24 @@ int main(int argc, char* argv[]) {
         // Check if the current line contains the start of a comment
         if (strstr(current_line, "/*") != NULL) {
             in_comment = 1;
-            printf("Comment Start: %s", current_line);
+            printf("\n Comment Start: %s", current_line);
         }
 
         // Check if the current line contains the end of a comment
         if (strstr(current_line, "*/") != NULL) {
             in_comment = 0;
-            printf("Comment End: %s\n", current_line);
+            printf("Comment End: %s", current_line);
+            printf("\n");
+        }
+
+        // Check if the current line contains a single-line comment
+        if (strstr(current_line, "//") != NULL) {
+            printf("\n Single Line Comment: %s", current_line);
+            printf("\n");
         }
 
         // Print the line as code or comment based on the flag
-        if (in_comment) {
+        else if (in_comment) {
             printf("Comment: %s", current_line);
         } else {
             printf("Code: %s", current_line);

@@ -1,5 +1,10 @@
 %{
 #include <stdio.h>
+
+#define RED_COLOR "\x1B[31m"
+#define GREEN_COLOR "\x1B[32m"
+#define RESET_COLOR "\x1B[0m"
+
 %}
 
 %x comment
@@ -39,18 +44,20 @@ int main(int argc, char* argv[]) {
         // Check if the current line contains the start of a comment
         if (strstr(current_line, "/*") != NULL) {
             in_comment = 1;
-            printf("Comment Start: %s", current_line);
+            printf("\n Comment Start: %s", current_line);
         }
 
         // Check if the current line contains the end of a comment
         if (strstr(current_line, "*/") != NULL) {
             in_comment = 0;
             printf("Comment End: %s", current_line);
+            printf("\n");
         }
 
         // Check if the current line contains a single-line comment
         if (strstr(current_line, "//") != NULL) {
-            printf("Single Line Comment: %s", current_line);
+            printf("\n Single Line Comment: %s", current_line);
+            printf("\n");
         }
 
         // Print the line as code or comment based on the flag
