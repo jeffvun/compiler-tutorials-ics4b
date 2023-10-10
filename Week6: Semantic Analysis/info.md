@@ -7,7 +7,8 @@ Sydney Gabriel Temba - 135255
 
 ## Task One Screenshot
 
-![programmingLines](https://github.com/jeffvun/compiler-tutorials-ics4b/assets/61079370/abb5663e-81e0-4a87-b485-7cf9eee0f796)
+<img width="1563" alt="image" src="https://github.com/jeffvun/compiler-tutorials-ics4b/assets/61079370/a84c6e0e-d24d-4e01-b985-9956071bdd18">
+
 
 
 ## Task Two Screenshot
