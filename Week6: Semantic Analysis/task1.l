@@ -6,14 +6,14 @@ COMMENT_START "/*"
 COMMENT_END "*/"
 
 %%
-{COMMENT_START}     { printf("Comment Start: %s\n", yytext); BEGIN(comment); }
-<comment>{COMMENT_END}       { printf("Comment End: %s\n", yytext); BEGIN(INITIAL); }
-<comment>.        ;  // Ignore characters inside comments
+{COMMENT_START}                 { printf("Comment Start: %s\n", yytext); BEGIN(comment); }
+<comment>{COMMENT_END}          { printf("Comment End: %s\n", yytext); BEGIN(INITIAL); }
+<comment>.                      ;  // Ignore characters inside comments
 
-\/\/[^\n]*          { printf("Single Line Comment: %s\n", yytext); }
-\n                 ;  // Ignore newlines
+\/\/[^\n]*                      { printf("Single Line Comment: %s\n", yytext); }
+\n                              ;  // Ignore newlines
 
-.                  { printf("Code: %s\n", yytext); }
+.                               { printf("Code: %s\n", yytext); }
 %%
 
 int main(int argc, char* argv[]) {
