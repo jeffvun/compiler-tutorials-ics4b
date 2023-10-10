@@ -441,8 +441,13 @@ char *yytext;
 #line 1 "task2.l"
 #line 2 "task2.l"
 #include <stdio.h>
-#line 445 "lex.yy.c"
-#line 446 "lex.yy.c"
+
+#define RED_COLOR "\x1B[31m"
+#define GREEN_COLOR "\x1B[32m"
+#define RESET_COLOR "\x1B[0m"
+
+#line 450 "lex.yy.c"
+#line 451 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -659,9 +664,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "task2.l"
+#line 10 "task2.l"
 
-#line 665 "lex.yy.c"
+#line 670 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -720,20 +725,20 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "task2.l"
-{ printf("Valid Identifier: %s\n", yytext); }
+#line 11 "task2.l"
+{ printf(GREEN_COLOR "Valid Identifier: %s\n" RESET_COLOR, yytext); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 7 "task2.l"
-{ printf("Invalid Identifier: %s\n", yytext); }
+#line 12 "task2.l"
+{ printf(RED_COLOR "Invalid Identifier: %s\n" RESET_COLOR, yytext); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "task2.l"
+#line 13 "task2.l"
 ECHO;
 	YY_BREAK
-#line 737 "lex.yy.c"
+#line 742 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1738,7 +1743,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 8 "task2.l"
+#line 13 "task2.l"
 
 
 int main() {

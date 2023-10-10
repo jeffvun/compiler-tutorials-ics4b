@@ -8,8 +8,8 @@
 %}
 
 %%
-[a-zA-Z_][a-zA-Z0-9_]*   { printf("Valid Identifier: %s\n", GREEN_COLOR yytext RESET_COLOR ); }
-.                        { printf(RED_COLOR "Invalid Identifier: %s\n", yytext RESET_COLOR ); }
+[a-zA-Z_][a-zA-Z0-9_]*   { printf(GREEN_COLOR "Valid Identifier: %s\n" RESET_COLOR, yytext); }
+.                        { printf(RED_COLOR "Invalid Identifier: %s\n" RESET_COLOR, yytext); }
 %%
 
 int main() {
