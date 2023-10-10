@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 %}
- 
+
 /*** Rule Section has three rules, first rule
 matches with capital letters, second rule
 matches with any character except newline and
