@@ -2,21 +2,24 @@
 #include <stdio.h>
 %}
 
+%x comment
+
 COMMENT_START "/*"
 COMMENT_END "*/"
 
 %%
 {COMMENT_START}                 { printf("Comment Start: %s\n", yytext); BEGIN(comment); }
 <comment>{COMMENT_END}          { printf("Comment End: %s\n", yytext); BEGIN(INITIAL); }
-<comment>.                      ;  // Ignore characters inside comments
 
 \/\/[^\n]*                      { printf("Single Line Comment: %s\n", yytext); }
-\n                              ;  // Ignore newlines
+\n                              ;
 
-.                               { printf("Code: %s\n", yytext); }
+.                               { printf("Code: %s", yytext); }
 %%
 
 int main(int argc, char* argv[]) {
+    int in_comment = 0; // Flag to track whether currently in a comment
+
     if (argc != 2) {
         printf("Usage: %s <input_file>\n", argv[0]);
         return 1;
@@ -29,7 +32,29 @@ int main(int argc, char* argv[]) {
     }
 
     yyin = file;
-    yylex();
+
+    char current_line[1024]; // Assuming a maximum line length of 1024 characters
+
+    while (fgets(current_line, sizeof(current_line), yyin) != NULL) {
+        // Check if the current line contains the start of a comment
+        if (strstr(current_line, "/*") != NULL) {
+            in_comment = 1;
+            printf("Comment Start: %s", current_line);
+        }
+
+        // Check if the current line contains the end of a comment
+        if (strstr(current_line, "*/") != NULL) {
+            in_comment = 0;
+            printf("Comment End: %s\n", current_line);
+        }
+
+        // Print the line as code or comment based on the flag
+        if (in_comment) {
+            printf("Comment: %s", current_line);
+        } else {
+            printf("Code: %s", current_line);
+        }
+    }
 
     fclose(file);
     return 0;
