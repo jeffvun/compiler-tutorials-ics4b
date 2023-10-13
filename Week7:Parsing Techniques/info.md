@@ -33,7 +33,7 @@ gcc -o calculator y.tab.c lex.yy.c -lm
 ```bash
 ./calculator
 ```
-You can then enter expressions like 2 + 3 * (4 - 1) and see the calculated result.
+You can then enter expressions like ``` 2 + 3 * (4 - 1) = ```  and see the calculated result.
 
 
 ### b. Implementing Operator Precedence
