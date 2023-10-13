@@ -37,3 +37,23 @@ Eg: You can enter expressions like ``` 2 + 3 * (4 - 1) =  ```   and see the calc
 
 
 ### b. Implementing Operator Precedence
+
+Operator precedence implementation was included in the `task4_parser.y` file. This is achieved using the  `%left` , `%right` , and `%nonassoc`  directives. These directives specify how operators are grouped and applied in expressions.
+
+From our code file we had:
+``` Yacc
+
+%left '+' '-'
+%left '*' '/'
+%nonassoc UMINUS
+
+```
+Which means that in order to calculate an expression with multiple operators such as `a+b*c-d/e`, it would be evaluated from left to right.
+
+`%left '+' '-'`: addition over substraction from left to right
+<br>`%left '*'` `/`: multiplication over division from left to right
+
+`%nonassoc UMINUS`: This directive specifies that the unary minus operator (-) has non-associative precedence i.e. cannot group with other operators of the same precedence level.
+
+### c. Output
+
