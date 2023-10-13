@@ -3,11 +3,19 @@
 ## Group Members
 Joseph Dua Vunanga - 136371  <br>
 Lee Leonard Sangoroh - 134327 <br>
-Sydney Gabriel Temba - 135255
+Sydney Gabriel Temba - 135255 <br>
+Michelle Were Ambunya - 135200
 
 ## Task Three 
 
-Task 3 does not need any screenshots and the guides are in the markdowns in the ipynb file
+### a. Output Screenshot(s) for task three
+
+#### Screenshot one
+![image](https://github.com/jeffvun/compiler-tutorials-ics4b/assets/61079370/3f976ef9-7b9e-49fb-8eef-3a2bc1e44941)
+
+### Screenshot two
+![image](https://github.com/jeffvun/compiler-tutorials-ics4b/assets/61079370/9306ae26-52fa-40b9-87ce-a29f4f09be0d)
+
 
 ## Task Four 
 
