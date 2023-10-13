@@ -7,7 +7,7 @@ Sydney Gabriel Temba - 135255
 
 ## Task Three 
 
-
+Task 3 does not need any screenshots and the guides are in the markdowns in the ipynb file
 
 ## Task Four 
 
@@ -56,4 +56,6 @@ Which means that in order to calculate an expression with multiple operators suc
 `%nonassoc UMINUS`: This directive specifies that the unary minus operator (-) has non-associative precedence i.e. cannot group with other operators of the same precedence level.
 
 ### c. Output
+![image](https://github.com/jeffvun/compiler-tutorials-ics4b/assets/61079370/5d0dba07-49d4-4938-bdeb-2552124677f7)
+
 
