@@ -724,7 +724,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 7 "task4_lexer.l"
-{ yylval = atoi(yytext); return NUMBER; }
+{ yylval.number = atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -734,17 +734,17 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 9 "task4_lexer.l"
+#line 10 "task4_lexer.l"
 ; // Skip whitespace and newlines
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 10 "task4_lexer.l"
+#line 11 "task4_lexer.l"
 { fprintf(stderr, "Unexpected character: %s\n", yytext); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 12 "task4_lexer.l"
+#line 13 "task4_lexer.l"
 ECHO;
 	YY_BREAK
 #line 751 "lex.yy.c"
@@ -1752,7 +1752,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 12 "task4_lexer.l"
+#line 13 "task4_lexer.l"
 
 
 int yywrap() {

@@ -17,8 +17,8 @@ To demonstrate how to generate a parser using YACC (Yet Another Compiler Compile
 #### Generate the lexer and parser files:
 
 ```bash
-flex lexer.l
-yacc -d parser.y
+flex task4_lexer.l
+yacc -d task4_parser.y
 ```
 This will create lex.yy.c, y.tab.c, and y.tab.h.
 
@@ -33,7 +33,7 @@ gcc -o calculator y.tab.c lex.yy.c -lm
 ```bash
 ./calculator
 ```
-You can then enter expressions like ``` 2 + 3 * (4 - 1) = ```  and see the calculated result.
+Eg: You can enter expressions like ``` 2 + 3 * (4 - 1) =  ```   and see the calculated result.
 
 
 ### b. Implementing Operator Precedence

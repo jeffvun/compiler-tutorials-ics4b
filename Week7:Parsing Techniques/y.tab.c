@@ -71,7 +71,11 @@
 
 #include <stdio.h>
 
-#line 75 "y.tab.c"
+extern int yylex();
+extern void yyerror(const char *s);
+
+
+#line 79 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -130,7 +134,16 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 9 "task4_parser.y"
+
+    int number;  // Type for the NUMBER token
+
+#line 144 "y.tab.c"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -546,7 +559,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    12,    12,    15,    16,    17,    18,    19,    20,    21
+       0,    25,    25,    28,    29,    30,    31,    37,    38,    39
 };
 #endif
 
@@ -1110,55 +1123,59 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* calc: expr  */
-#line 12 "task4_parser.y"
-              { printf("Result: %d\n", yyvsp[0]); }
-#line 1116 "y.tab.c"
+#line 25 "task4_parser.y"
+              { printf("Result: %d\n", (yyvsp[0].number)); }
+#line 1129 "y.tab.c"
     break;
 
   case 3: /* expr: expr '+' expr  */
-#line 15 "task4_parser.y"
-                       { yyval = yyvsp[-2] + yyvsp[0]; }
-#line 1122 "y.tab.c"
+#line 28 "task4_parser.y"
+                       { (yyval.number) = (yyvsp[-2].number) + (yyvsp[0].number); }
+#line 1135 "y.tab.c"
     break;
 
   case 4: /* expr: expr '-' expr  */
-#line 16 "task4_parser.y"
-                     { yyval = yyvsp[-2] - yyvsp[0]; }
-#line 1128 "y.tab.c"
+#line 29 "task4_parser.y"
+                     { (yyval.number) = (yyvsp[-2].number) - (yyvsp[0].number); }
+#line 1141 "y.tab.c"
     break;
 
   case 5: /* expr: expr '*' expr  */
-#line 17 "task4_parser.y"
-                     { yyval = yyvsp[-2] * yyvsp[0]; }
-#line 1134 "y.tab.c"
+#line 30 "task4_parser.y"
+                     { (yyval.number) = (yyvsp[-2].number) * (yyvsp[0].number); }
+#line 1147 "y.tab.c"
     break;
 
   case 6: /* expr: expr '/' expr  */
-#line 18 "task4_parser.y"
-                     { if (yyvsp[0] == 0) { yyerror("Division by zero"); yyval = 0; } else yyval = yyvsp[-2] / yyvsp[0]; }
-#line 1140 "y.tab.c"
+#line 32 "task4_parser.y"
+    { 
+        if ((yyvsp[0].number) == 0) { 
+            yyerror("Division by zero"); (yyval.number) = 0; 
+        } else (yyval.number) = (yyvsp[-2].number) / (yyvsp[0].number); 
+    }
+#line 1157 "y.tab.c"
     break;
 
   case 7: /* expr: '(' expr ')'  */
-#line 19 "task4_parser.y"
-                      { yyval = yyvsp[-1]; }
-#line 1146 "y.tab.c"
+#line 37 "task4_parser.y"
+                      { (yyval.number) = (yyvsp[-1].number); }
+#line 1163 "y.tab.c"
     break;
 
   case 8: /* expr: '-' expr  */
-#line 20 "task4_parser.y"
-                             { yyval = -yyvsp[0]; }
-#line 1152 "y.tab.c"
+#line 38 "task4_parser.y"
+                             { (yyval.number) = -(yyvsp[0].number); }
+#line 1169 "y.tab.c"
     break;
 
   case 9: /* expr: NUMBER  */
-#line 21 "task4_parser.y"
-                      { yyval = yyvsp[0]; }
-#line 1158 "y.tab.c"
+#line 39 "task4_parser.y"
+                      { (yyval.number) = (yyvsp[0].number); }
+#line 1175 "y.tab.c"
     break;
 
 
-#line 1162 "y.tab.c"
+#line 1179 "y.tab.c"
 
       default: break;
     }
@@ -1351,7 +1368,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 24 "task4_parser.y"
+#line 42 "task4_parser.y"
 
 
 int main() {
