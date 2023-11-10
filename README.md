@@ -4,7 +4,9 @@
 Joseph Dua Vunanga - 136371  <br>
 Lee Leonard Sangoroh - 134327 <br>
 Sydney Temba - 135255 <br>
-Michelle Were Ambunya - 135200
+Michelle Were Ambunya - 135200 <br>
+Larry Mutoni - 135957
+
 
 ## Description
 Welcome to our GitHub repository dedicated to Compiler Construction! If you're a curious beginner looking to dive into the world of compiler design, then this repository could be your one-stop resource for learning and practicing the frontend aspect of compiler construction, from scanners, tokenizers to parsers and etc...
