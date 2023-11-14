@@ -3,7 +3,9 @@
 ## Group Members
 Joseph Dua Vunanga - 136371  <br>
 Lee Leonard Sangoroh - 134327 <br>
-Sydney Gabriel Temba - 135255
+Sydney Gabriel Temba - 135255 <br>
+Michelle Were Ambunya - 135200 <br>
+Larry Mutoni - 135957
 
 ## Task One Screenshot
 
